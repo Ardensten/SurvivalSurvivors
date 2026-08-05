@@ -4,7 +4,7 @@
 
 Every expedition is a gamble.
 
-Push deeper into the unknown to gather resources, uncover secrets, and grow stronger—but don't stay away for too long. The longer you're gone, the greater the threat to your World Seed.
+Push deeper into the unknown to gather resources, uncover secrets, and grow stronger, but don't stay away for too long. The longer you're gone, the greater the threat to your World Seed.
 
 > *How far are you willing to explore before you have to run home and defend your World Seed?*
 
