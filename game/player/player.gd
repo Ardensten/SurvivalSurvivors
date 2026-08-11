@@ -6,6 +6,10 @@ const JUMP_VELOCITY = 4.5
 @onready var health_component: HealthComponent = $HealthComponent
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("debug_damage"):
+		health_component.take_damage(25.0)
+
 func _ready() -> void:
 	health_component.died.connect(_on_died)
 
@@ -31,4 +35,4 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_died() -> void:
-	print("PLAYER DIED")
+	SceneManager.restart_scene()
