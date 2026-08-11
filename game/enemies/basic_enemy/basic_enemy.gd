@@ -1,16 +1,13 @@
 extends CharacterBody3D
 
-@export var move_speed: float = 3.0
-@export var stop_distance: float = 1.5
-
-@export var attack_range: float = 1.75
-@export var attack_damage: float = 10.0
-@export var attack_cooldown: float = 1.0
+const SPEED := 5.0
+const CONTACT_DAMAGE := 10.0
+const DAMAGE_COOLDOWN := 1.0
 
 @onready var health_component: HealthComponent = $HealthComponent
 
 var player: Node3D
-var attack_cooldown_remaining: float = 0.0
+var damage_cooldown := 0.0
 
 
 func _ready() -> void:
@@ -19,54 +16,50 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("debug_enemy_damage"):
-		take_damage(25.0)
-		print("Enemy health: ", health_component.current_health)
-
-
 func _physics_process(delta: float) -> void:
-	if not is_instance_valid(player):
-		return
+	if damage_cooldown > 0.0:
+		damage_cooldown -= delta
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	attack_cooldown_remaining = max(
-		attack_cooldown_remaining - delta,
-		0.0
-	)
+	if player == null:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		move_and_slide()
+		return
 
-	var offset := player.global_position - global_position
-	var horizontal_offset := Vector3(offset.x, 0.0, offset.z)
-	var distance := horizontal_offset.length()
+	var direction := player.global_position - global_position
+	direction.y = 0.0
+	direction = direction.normalized()
 
-	if distance > stop_distance:
-		var direction := horizontal_offset.normalized()
+	if direction != Vector3.ZERO:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
 
-		velocity.x = direction.x * move_speed
-		velocity.z = direction.z * move_speed
+		rotation.y = atan2(direction.x, direction.z)
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
 
 	move_and_slide()
 
-	if distance <= attack_range:
-		try_attack()
+	_check_contact_damage()
 
 
-func try_attack() -> void:
-	if attack_cooldown_remaining > 0.0:
+func _check_contact_damage() -> void:
+	if damage_cooldown > 0.0:
 		return
 
-	if not is_instance_valid(player):
-		return
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
 
-	player.take_damage(attack_damage)
-	attack_cooldown_remaining = attack_cooldown
-
-	print("Enemy attacked player for ", attack_damage)
+		if collider != null and collider.is_in_group("player"):
+			if collider.has_method("take_damage"):
+				collider.take_damage(CONTACT_DAMAGE)
+				damage_cooldown = DAMAGE_COOLDOWN
+				return
 
 
 func take_damage(amount: float) -> void:
