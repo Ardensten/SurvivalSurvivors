@@ -22,4 +22,13 @@ camera_offset = Vector3(0, 14, 20)
 [node name="DebugOverlay" parent="." unique_id=1587992545 instance=ExtResource("4_c651c")]
 
 [node name="BasicEnemy" parent="." unique_id=100671362 instance=ExtResource("6_kfbq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.378458, 0.38893867, 2.340744)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.378458, 0.7531123, 2.340744)
+
+[node name="BasicEnemy2" parent="." unique_id=2096423427 instance=ExtResource("6_kfbq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2928066, 0.5, 5.785075)
+
+[node name="BasicEnemy3" parent="." unique_id=117093443 instance=ExtResource("6_kfbq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.273474, 0.5, 3.4363365)
+
+[node name="BasicEnemy4" parent="." unique_id=1302916419 instance=ExtResource("6_kfbq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7048254, 0.50000095, -5.2491665)

@@ -35,5 +35,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func take_damage(amount: float) -> void:
+	health_component.take_damage(amount)
+
+
 func _on_died() -> void:
 	SceneManager.restart_scene()

@@ -8,7 +8,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2mth"]
 size = Vector3(1, 1.9999999, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=1081011597]
+[node name="Player" type="CharacterBody3D" unique_id=1081011597 groups=["player"]]
 script = ExtResource("1_obar5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1947586394]
