@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b6egx6mrhs5gi" path="res://game/camera/camera.tscn" id="2_c651c"]
 [ext_resource type="PackedScene" uid="uid://c4ne1loh7upyv" path="res://game/world/world.tscn" id="2_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://c4ejih2we525s" path="res://debug/debug_overlay.tscn" id="4_c651c"]
+[ext_resource type="PackedScene" uid="uid://bxupac44dy14c" path="res://game/enemies/basic_enemy/basic_enemy.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node3D" unique_id=1246959133]
 script = ExtResource("1_3wy1v")
@@ -19,3 +20,6 @@ camera_offset = Vector3(0, 14, 20)
 [node name="World" parent="." unique_id=535120413 instance=ExtResource("2_xwkvk")]
 
 [node name="DebugOverlay" parent="." unique_id=1587992545 instance=ExtResource("4_c651c")]
+
+[node name="BasicEnemy" parent="." unique_id=100671362 instance=ExtResource("6_kfbq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.378458, 0.38893867, 2.340744)

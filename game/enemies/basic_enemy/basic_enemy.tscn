@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bxupac44dy14c"]
+
+[ext_resource type="Script" uid="uid://dnm81w6u32wgr" path="res://game/enemies/basic_enemy/basic_enemy.gd" id="1_gh2gl"]
+[ext_resource type="PackedScene" uid="uid://c4ndltp5u8kpq" path="res://game/components/health/health_component.tscn" id="2_ti666"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_15q6v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjb4j"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6n0ce"]
+size = Vector3(0.99886733, 0.9999998, 0.99886733)
+
+[node name="BasicEnemy" type="CharacterBody3D" unique_id=100671362]
+script = ExtResource("1_gh2gl")
+
+[node name="HealthComponent" parent="." unique_id=525045617 instance=ExtResource("2_ti666")]
+max_health = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2095317988]
+mesh = SubResource("SphereMesh_15q6v")
+surface_material_override/0 = SubResource("StandardMaterial3D_jjb4j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1138177329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.940697e-08, 0)
+shape = SubResource("BoxShape3D_6n0ce")

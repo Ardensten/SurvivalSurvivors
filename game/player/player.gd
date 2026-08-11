@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 4.5
 
 
 func _process(_delta: float) -> void:
+	# This is only for debugging and is to be removed later.
 	if Input.is_action_just_pressed("debug_damage"):
 		health_component.take_damage(25.0)
 
