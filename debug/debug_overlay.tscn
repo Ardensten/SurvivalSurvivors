@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c4ejih2we525s"]
+
+[ext_resource type="Script" uid="uid://rwrgxdmb5s3c" path="res://debug/debug_overlay.gd" id="1_xbgyx"]
+
+[node name="DebugOverlay" type="CanvasLayer" unique_id=1587992545]
+script = ExtResource("1_xbgyx")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1786825084]
+offset_right = 40.0
+offset_bottom = 104.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2089828818]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=604880124]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=305549333]
+layout_mode = 2
+
+[node name="FrameTimeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1740245333]
+layout_mode = 2
+
+[node name="PositionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=692633156]
+layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1003835627]
+layout_mode = 2

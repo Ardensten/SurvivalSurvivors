@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://clc8ibsyeuehl" path="res://game/player/player.tscn" id="1_pjrb6"]
 [ext_resource type="PackedScene" uid="uid://b6egx6mrhs5gi" path="res://game/camera/camera.tscn" id="2_c651c"]
 [ext_resource type="PackedScene" uid="uid://c4ne1loh7upyv" path="res://game/world/world.tscn" id="2_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://c4ejih2we525s" path="res://debug/debug_overlay.tscn" id="4_c651c"]
 
 [node name="Main" type="Node3D" unique_id=1246959133]
 
@@ -14,3 +15,6 @@ target = NodePath("../Player")
 camera_offset = Vector3(0, 14, 20)
 
 [node name="World" parent="." unique_id=535120413 instance=ExtResource("2_xwkvk")]
+
+[node name="DebugOverlay" parent="." unique_id=1587992545 node_paths=PackedStringArray("player") instance=ExtResource("4_c651c")]
+player = NodePath("../Player")

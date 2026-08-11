@@ -43,7 +43,7 @@ mesh = SubResource("PlaneMesh_88s4v")
 shape = SubResource("ConcavePolygonShape3D_6l7jx")
 
 [node name="Box" type="StaticBody3D" parent="." unique_id=1374707631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6899815, 0.49393308, -3.7087593)
+transform = Transform3D(0.8733143, 0, -0.4871571, 0, 1, 0, 0.4871571, 0, 0.8733143, 4.6899815, 0.49393308, -3.7087593)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Box" unique_id=345533637]
 mesh = SubResource("BoxMesh_15q6v")
@@ -52,7 +52,7 @@ mesh = SubResource("BoxMesh_15q6v")
 shape = SubResource("BoxShape3D_aqibe")
 
 [node name="Box2" type="StaticBody3D" parent="." unique_id=44922338]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4423614, 0.49393308, -5.421429)
+transform = Transform3D(0.0537484, 0, 0.9985545, 0, 1, 0, -0.9985545, 0, 0.0537484, 6.4423614, 0.49393308, -5.421429)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Box2" unique_id=385315827]
 mesh = SubResource("BoxMesh_15q6v")
