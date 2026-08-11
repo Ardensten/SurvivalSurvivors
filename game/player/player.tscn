@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clc8ibsyeuehl"]
 
 [ext_resource type="Script" uid="uid://bm0k186hcaani" path="res://game/player/player.gd" id="1_obar5"]
+[ext_resource type="PackedScene" uid="uid://c4ndltp5u8kpq" path="res://game/components/health/health_component.tscn" id="2_b2mth"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_15q6v"]
 
@@ -16,3 +17,5 @@ mesh = SubResource("CapsuleMesh_15q6v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1412855244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, 0)
 shape = SubResource("BoxShape3D_b2mth")
+
+[node name="HealthComponent" parent="." unique_id=525045617 instance=ExtResource("2_b2mth")]
