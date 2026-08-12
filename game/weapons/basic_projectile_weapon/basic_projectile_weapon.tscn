@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cwsb0q8jr4iil"]
+
+[ext_resource type="Script" uid="uid://dtkry1mupbky5" path="res://game/weapons/basic_projectile_weapon/basic_projectile_weapon.gd" id="1_ipeos"]
+
+[node name="BasicProjectileWeapon" type="Node3D" unique_id=1988269547]
+script = ExtResource("1_ipeos")

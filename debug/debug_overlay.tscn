@@ -26,3 +26,6 @@ layout_mode = 2
 
 [node name="VersionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1003835627]
 layout_mode = 2
+
+[node name="EnemyCountLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1261206076]
+layout_mode = 2

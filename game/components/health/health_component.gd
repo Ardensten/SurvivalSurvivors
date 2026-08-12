@@ -6,12 +6,8 @@ signal health_changed(current_health: float, max_health: float)
 
 @export var max_health: float = 100.0
 
-var current_health: float
+@onready var current_health: float = max_health
 var is_dead: bool = false
-
-
-func _ready() -> void:
-	current_health = max_health
 
 
 func take_damage(amount: float) -> void:

@@ -2,16 +2,21 @@
 
 [ext_resource type="Script" uid="uid://cjb0s54jw65s1" path="res://main/main.gd" id="1_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://clc8ibsyeuehl" path="res://game/player/player.tscn" id="1_pjrb6"]
+[ext_resource type="PackedScene" uid="uid://clckorxauk1vg" path="res://ui/player_hud/player_hud.tscn" id="2_4dugh"]
 [ext_resource type="PackedScene" uid="uid://b6egx6mrhs5gi" path="res://game/camera/camera.tscn" id="2_c651c"]
 [ext_resource type="PackedScene" uid="uid://c4ne1loh7upyv" path="res://game/world/world.tscn" id="2_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://c4ejih2we525s" path="res://debug/debug_overlay.tscn" id="4_c651c"]
 [ext_resource type="PackedScene" uid="uid://bxupac44dy14c" path="res://game/enemies/basic_enemy/basic_enemy.tscn" id="6_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://dj8k53e8f18q7" path="res://game/enemies/enemy_spawner/enemy_spawner.tscn" id="7_4dugh"]
 
 [node name="Main" type="Node3D" unique_id=1246959133]
 script = ExtResource("1_3wy1v")
 
+[node name="PlayerHUD" parent="." unique_id=45167216 node_paths=PackedStringArray("player") instance=ExtResource("2_4dugh")]
+player = NodePath("../Player")
+
 [node name="Player" parent="." unique_id=1081011597 instance=ExtResource("1_pjrb6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4133425, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.426115, 1.4133425, 0)
 
 [node name="Camera" parent="." unique_id=758977669 node_paths=PackedStringArray("target") instance=ExtResource("2_c651c")]
 target = NodePath("../Player")
@@ -19,16 +24,12 @@ camera_offset = Vector3(0, 14, 20)
 
 [node name="World" parent="." unique_id=535120413 instance=ExtResource("2_xwkvk")]
 
-[node name="DebugOverlay" parent="." unique_id=1587992545 instance=ExtResource("4_c651c")]
+[node name="DebugOverlay" parent="." unique_id=1587992545 node_paths=PackedStringArray("player", "enemy_spawner") instance=ExtResource("4_c651c")]
+player = NodePath("../Player")
+enemy_spawner = NodePath("../EnemySpawner")
 
-[node name="BasicEnemy" parent="." unique_id=100671362 instance=ExtResource("6_kfbq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.378458, 0.7531123, 2.340744)
-
-[node name="BasicEnemy2" parent="." unique_id=2096423427 instance=ExtResource("6_kfbq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2928066, 0.5, 5.785075)
-
-[node name="BasicEnemy3" parent="." unique_id=117093443 instance=ExtResource("6_kfbq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.273474, 0.5, 3.4363365)
-
-[node name="BasicEnemy4" parent="." unique_id=1302916419 instance=ExtResource("6_kfbq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7048254, 0.50000095, -5.2491665)
+[node name="EnemySpawner" parent="." unique_id=1624371620 instance=ExtResource("7_4dugh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5733395, 0)
+enemy_scene = ExtResource("6_kfbq2")
+spawn_interval = 0.9
+max_active_enemies = 100

@@ -1,19 +1,45 @@
 extends CharacterBody3D
 
-const SPEED := 5.0
+const SPEED := 3.5
 const CONTACT_DAMAGE := 10.0
 const DAMAGE_COOLDOWN := 1.0
 
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var model: Node3D = $Demon
+@onready var mesh: MeshInstance3D = $Demon/MonsterArmature/Skeleton3D/Demon_001
+@onready var health_label: Label3D = $HealthLabel
 
 var player: Node3D
 var damage_cooldown := 0.0
 
+var hit_flash_material: StandardMaterial3D
+
 
 func _ready() -> void:
 	health_component.died.connect(_on_died)
+	health_component.health_changed.connect(_on_health_changed)
 
 	player = get_tree().get_first_node_in_group("player")
+
+	update_health_label()
+	setup_hit_flash()
+
+
+func update_health_label() -> void:
+	health_label.text = "%.0f / %.0f" % [
+		health_component.current_health,
+		health_component.max_health
+	]
+
+
+func setup_hit_flash() -> void:
+	hit_flash_material = StandardMaterial3D.new()
+
+	hit_flash_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	hit_flash_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	hit_flash_material.albedo_color = Color(1.0, 1.0, 1.0, 0.0)
+
+	mesh.material_overlay = hit_flash_material
 
 
 func _physics_process(delta: float) -> void:
@@ -66,5 +92,37 @@ func take_damage(amount: float) -> void:
 	health_component.take_damage(amount)
 
 
+func _on_health_changed(
+	_current_health: float,
+	_max_health: float
+) -> void:
+	update_health_label()
+	hit_flash()
+
+
+func hit_flash() -> void:
+	if hit_flash_material == null:
+		return
+
+	hit_flash_material.albedo_color.a = 1.0
+
+	await get_tree().create_timer(0.08).timeout
+
+	if not is_instance_valid(self):
+		return
+
+	hit_flash_material.albedo_color.a = 0.0
+
+
 func _on_died() -> void:
-	queue_free()
+	set_physics_process(false)
+	$CollisionShape3D.set_deferred("disabled", true)
+
+	var tween := create_tween()
+	tween.tween_property(
+		model,
+		"scale",
+		Vector3.ZERO,
+		0.12
+	)
+	tween.tween_callback(queue_free)
