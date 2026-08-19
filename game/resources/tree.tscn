@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bhlmbvsyoupvh"]
+
+[ext_resource type="PackedScene" uid="uid://bck4bqp3xxmvd" path="res://game/resources/resource_nodes/resource_node.tscn" id="1_qgk0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvl2c"]
+albedo_color = Color(0.48689008, 0.156549, 4.813075e-08, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hatu6"]
+material = SubResource("StandardMaterial3D_bvl2c")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qgk0b"]
+height = 4.0
+radius = 0.3
+
+[node name="TreeNode" unique_id=738338164 instance=ExtResource("1_qgk0b")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=104568769]
+mesh = SubResource("CylinderMesh_hatu6")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1860771475]
+shape = SubResource("CylinderShape3D_qgk0b")

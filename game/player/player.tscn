@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c4ndltp5u8kpq" path="res://game/components/health/health_component.tscn" id="2_b2mth"]
 [ext_resource type="PackedScene" uid="uid://cwsb0q8jr4iil" path="res://game/weapons/basic_projectile_weapon/basic_projectile_weapon.tscn" id="3_8soms"]
 [ext_resource type="PackedScene" uid="uid://qn7jsnv6pks7" path="res://game/weapons/projectiles/basic_projectile/basic_projectile.tscn" id="4_a4w0n"]
+[ext_resource type="Script" uid="uid://dkrflqkb7sghe" path="res://game/player/resource_gatherer.gd" id="5_5fytw"]
+[ext_resource type="Script" uid="uid://c406bors8a04b" path="res://game/player/resource_pool.gd" id="6_4ste8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2mth"]
 size = Vector3(1, 1.9999999, 1)
@@ -17647,8 +17649,11 @@ _data = {
 &"Walk_Formal": SubResource("Animation_mkhu0")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_15q6v"]
+radius = 2.0
+
 [node name="Player" type="CharacterBody3D" unique_id=1081011597 groups=["player"]]
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_obar5")
 
 [node name="BasicProjectileWeapon" parent="." unique_id=1988269547 instance=ExtResource("3_8soms")]
@@ -18131,3 +18136,18 @@ skeleton = NodePath("..")
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 libraries/ = SubResource("AnimationLibrary_qcdmm")
 autoplay = &"Idle"
+
+[node name="ResourceGatherer" type="Node3D" parent="." unique_id=376683992 node_paths=PackedStringArray("resource_pool")]
+script = ExtResource("5_5fytw")
+resource_pool = NodePath("../ResourcePool")
+
+[node name="GatheringArea" type="Area3D" parent="ResourceGatherer" unique_id=1425248494]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResourceGatherer/GatheringArea" unique_id=416383120]
+shape = SubResource("SphereShape3D_15q6v")
+
+[node name="ResourcePool" type="Node" parent="." unique_id=1402942382]
+script = ExtResource("6_4ste8")
+
+[connection signal="body_entered" from="ResourceGatherer/GatheringArea" to="ResourceGatherer" method="_on_gathering_area_body_entered"]
+[connection signal="body_exited" from="ResourceGatherer/GatheringArea" to="ResourceGatherer" method="_on_gathering_area_body_exited"]

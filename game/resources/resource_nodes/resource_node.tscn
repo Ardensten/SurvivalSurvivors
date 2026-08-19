@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bck4bqp3xxmvd"]
+
+[ext_resource type="Script" uid="uid://bodd2x2cj8d0y" path="res://game/resources/resource_nodes/resource_node.gd" id="1_1jm54"]
+
+[node name="ResourceNode" type="StaticBody3D" unique_id=738338164]
+collision_layer = 9
+script = ExtResource("1_1jm54")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=104568769]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1860771475]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cwtly5l43my0o"]
+
+[ext_resource type="PackedScene" uid="uid://bck4bqp3xxmvd" path="res://game/resources/resource_nodes/resource_node.tscn" id="1_sqojq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uynus"]
+albedo_color = Color(0.37413925, 0.37413928, 0.37413922, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dess5"]
+material = SubResource("StandardMaterial3D_uynus")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sqojq"]
+
+[node name="RockNode" unique_id=738338164 instance=ExtResource("1_sqojq")]
+resource_type = 1
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=104568769]
+mesh = SubResource("SphereMesh_dess5")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1860771475]
+shape = SubResource("SphereShape3D_sqojq")

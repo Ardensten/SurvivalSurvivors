@@ -22,6 +22,7 @@ GameManager="*uid://dhii28kxxdrta"
 SaveManager="*uid://cj42pgqqttkln"
 SceneManager="*uid://upps0h3un3jh"
 SettingsManager="*uid://bxxa32feejqqd"
+ResourceManager="*uid://dbpcdqdge2oe1"
 
 [display]
 
@@ -108,6 +109,7 @@ debug_enemy_damage={
 3d_physics/layer_1="player"
 3d_physics/layer_2="enemy"
 3d_physics/layer_3="ground"
+3d_physics/layer_4="resources"
 
 [physics]
 

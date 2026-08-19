@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clckorxauk1vg"]
 
 [ext_resource type="Script" uid="uid://b1qj32etngo6q" path="res://ui/player_hud/player_hud.gd" id="1_vyppb"]
+[ext_resource type="Script" uid="uid://bx66iuhues8gh" path="res://ui/player_hud/resource_display.gd" id="2_rtdb5"]
 
 [node name="PlayerHUD" type="CanvasLayer" unique_id=45167216]
 script = ExtResource("1_vyppb")
@@ -18,3 +19,18 @@ layout_mode = 2
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1388943500]
 layout_mode = 2
 show_percentage = false
+
+[node name="ResourceDisplay" type="VBoxContainer" parent="." unique_id=1027587882]
+offset_top = 151.0
+offset_right = 35.0
+offset_bottom = 227.0
+script = ExtResource("2_rtdb5")
+
+[node name="WoodLabel" type="Label" parent="ResourceDisplay" unique_id=119509219]
+layout_mode = 2
+text = "🪵 0
+"
+
+[node name="StoneLabel" type="Label" parent="ResourceDisplay" unique_id=483740385]
+layout_mode = 2
+text = "🪨 0"
