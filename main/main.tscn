@@ -39,8 +39,12 @@ max_active_enemies = 0
 [node name="WorldTree" parent="." unique_id=1289431641 instance=ExtResource("9_grrlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.298538, 1.1031196, -4.4289007)
 
-[node name="BuildingPlacement" type="Node3D" parent="." unique_id=200007758 node_paths=PackedStringArray("camera")]
+[node name="BuildingPlacement" type="Node3D" parent="." unique_id=200007758 node_paths=PackedStringArray("camera", "worldtree", "resource_pool")]
 script = ExtResource("10_0i4oc")
 camera = NodePath("../Camera/Camera3D")
+worldtree = NodePath("../WorldTree")
+resource_pool = NodePath("../Player/ResourcePool")
+blocking_mask = 11
 
+[editable path="Player"]
 [editable path="Camera"]

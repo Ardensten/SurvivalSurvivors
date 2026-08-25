@@ -2,10 +2,14 @@ class_name BuildingPlacement
 extends Node3D
 
 @export var camera: Camera3D
+@export var worldtree: Worldtree
+@export var resource_pool: ResourcePool
+
+@export_flags_3d_physics var blocking_mask: int
 
 var active_definition: BuildingDefinition
 var ghost: Node3D
-
+var is_valid_placement: bool = false
 
 func _process(_delta: float) -> void:
 	if ghost == null:
@@ -27,7 +31,21 @@ func _process(_delta: float) -> void:
 	var result := get_world_3d().direct_space_state.intersect_ray(query)
 
 	if result:
-		ghost.global_position = result.position
+		var within_build_radius := worldtree.is_position_within_build_radius(
+			ghost.global_position
+		)
+
+		var area_clear := is_area_clear(ghost.global_position)
+
+		var can_afford := resource_pool.can_afford(active_definition)
+
+		is_valid_placement = (
+			within_build_radius
+			and area_clear
+			and can_afford
+		)
+
+		update_ghost_visual(is_valid_placement)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -81,3 +99,38 @@ func apply_ghost_visual(node: Node) -> void:
 
 	for child in node.get_children():
 		apply_ghost_visual(child)
+
+
+func update_ghost_visual(valid: bool) -> void:
+	var color := Color(0.2, 1.0, 0.2, 0.5) if valid else Color(1.0, 0.2, 0.2, 0.5)
+	set_ghost_color(ghost, color)
+
+
+func set_ghost_color(node: Node, color: Color) -> void:
+	if node is MeshInstance3D:
+		var material := StandardMaterial3D.new()
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		material.albedo_color = color
+		node.material_override = material
+
+	for child in node.get_children():
+		set_ghost_color(child, color)
+
+
+func is_area_clear(position: Vector3) -> bool:
+	var shape := BoxShape3D.new()
+
+	shape.size = Vector3(
+		active_definition.footprint.x,
+		2.0,
+		active_definition.footprint.y
+	)
+
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = shape
+	query.transform = Transform3D(Basis.IDENTITY, position)
+	query.collision_mask = blocking_mask
+
+	var results := get_world_3d().direct_space_state.intersect_shape(query)
+
+	return results.is_empty()
