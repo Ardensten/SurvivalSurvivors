@@ -1,7 +1,7 @@
-extends VBoxContainer
+extends MarginContainer
 
-@onready var wood_label: Label = $WoodLabel
-@onready var stone_label: Label = $StoneLabel
+@onready var wood_label: Label = $VBoxContainer/WoodLabel
+@onready var stone_label: Label = $VBoxContainer/StoneLabel
 
 
 func setup(resource_pool: ResourcePool) -> void:

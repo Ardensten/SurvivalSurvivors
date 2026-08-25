@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BuildingDefinition" format=3 uid="uid://t12cnktd7udh"]
+
+[ext_resource type="PackedScene" uid="uid://dv8il2xnqwvi4" path="res://game/buildings/tower/tower.tscn" id="1_4nash"]
+[ext_resource type="Script" uid="uid://b0rg7oww5cbm7" path="res://game/buildings/building_definition.gd" id="1_chvup"]
+
+[resource]
+script = ExtResource("1_chvup")
+building_name = "Tower"
+scene = ExtResource("1_4nash")
+stone_cost = 5
+metadata/_custom_type_script = "uid://b0rg7oww5cbm7"

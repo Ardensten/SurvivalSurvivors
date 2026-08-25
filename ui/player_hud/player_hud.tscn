@@ -2,35 +2,66 @@
 
 [ext_resource type="Script" uid="uid://b1qj32etngo6q" path="res://ui/player_hud/player_hud.gd" id="1_vyppb"]
 [ext_resource type="Script" uid="uid://bx66iuhues8gh" path="res://ui/player_hud/resource_display.gd" id="2_rtdb5"]
+[ext_resource type="Script" uid="uid://cn0a6v4s5rres" path="res://ui/player_hud/build_panel.gd" id="3_sqrx6"]
+[ext_resource type="PackedScene" uid="uid://b80iaaolby3e6" path="res://ui/building_entry/building_entry.tscn" id="4_kpoie"]
+[ext_resource type="Script" uid="uid://b0rg7oww5cbm7" path="res://game/buildings/building_definition.gd" id="5_kgno4"]
+[ext_resource type="Resource" uid="uid://bemkehcinxgjx" path="res://game/buildings/wall/wall.tres" id="6_w7jxt"]
+[ext_resource type="Resource" uid="uid://t12cnktd7udh" path="res://game/buildings/tower/tower.tres" id="7_kgno4"]
 
 [node name="PlayerHUD" type="CanvasLayer" unique_id=45167216]
 script = ExtResource("1_vyppb")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=473429532]
+[node name="HealthDisplay" type="MarginContainer" parent="." unique_id=473429532]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1450910789]
+[node name="VBoxContainer" type="VBoxContainer" parent="HealthDisplay" unique_id=1450910789]
 layout_mode = 2
 
-[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=844595158]
+[node name="HealthLabel" type="Label" parent="HealthDisplay/VBoxContainer" unique_id=844595158]
 layout_mode = 2
 
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1388943500]
+[node name="HealthBar" type="ProgressBar" parent="HealthDisplay/VBoxContainer" unique_id=1388943500]
 layout_mode = 2
 show_percentage = false
 
-[node name="ResourceDisplay" type="VBoxContainer" parent="." unique_id=1027587882]
-offset_top = 151.0
-offset_right = 35.0
-offset_bottom = 227.0
+[node name="ResourceDisplay" type="MarginContainer" parent="." unique_id=1457241201]
+offset_left = 21.0
+offset_top = 182.0
+offset_right = 57.0
+offset_bottom = 258.0
 script = ExtResource("2_rtdb5")
 
-[node name="WoodLabel" type="Label" parent="ResourceDisplay" unique_id=119509219]
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourceDisplay" unique_id=1027587882]
+layout_mode = 2
+
+[node name="WoodLabel" type="Label" parent="ResourceDisplay/VBoxContainer" unique_id=119509219]
 layout_mode = 2
 text = "🪵 0
 "
 
-[node name="StoneLabel" type="Label" parent="ResourceDisplay" unique_id=483740385]
+[node name="StoneLabel" type="Label" parent="ResourceDisplay/VBoxContainer" unique_id=483740385]
 layout_mode = 2
 text = "🪨 0"
+
+[node name="BuildPanel" type="PanelContainer" parent="." unique_id=764511100]
+visible = false
+offset_left = 98.0
+offset_top = 182.0
+offset_right = 348.0
+offset_bottom = 482.0
+script = ExtResource("3_sqrx6")
+building_entry_scene = ExtResource("4_kpoie")
+building_definitions = Array[ExtResource("5_kgno4")]([ExtResource("6_w7jxt"), ExtResource("7_kgno4")])
+
+[node name="MarginContainer" type="MarginContainer" parent="BuildPanel" unique_id=1405444266]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildPanel/MarginContainer" unique_id=2094060590]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="BuildPanel/MarginContainer/VBoxContainer" unique_id=1480917548]
+layout_mode = 2
+
+[node name="BuildingList" type="VBoxContainer" parent="BuildPanel/MarginContainer/VBoxContainer" unique_id=1109968671]
+layout_mode = 2

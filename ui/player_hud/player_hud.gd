@@ -2,8 +2,8 @@ extends CanvasLayer
 
 @export var player: Node
 
-@onready var health_label: Label = $MarginContainer/VBoxContainer/HealthLabel
-@onready var health_bar: ProgressBar = $MarginContainer/VBoxContainer/HealthBar
+@onready var health_label: Label = $HealthDisplay/VBoxContainer/HealthLabel
+@onready var health_bar: ProgressBar = $HealthDisplay/VBoxContainer/HealthBar
 
 
 func _ready() -> void:
@@ -21,6 +21,11 @@ func _ready() -> void:
 		health_component.current_health,
 		health_component.max_health
 	)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_build_panel"):
+		$BuildPanel.visible = not $BuildPanel.visible
 
 
 func _on_health_changed(

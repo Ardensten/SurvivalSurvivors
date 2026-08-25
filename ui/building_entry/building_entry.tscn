@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b80iaaolby3e6"]
+
+[ext_resource type="Script" uid="uid://btxks3i6wo4r2" path="res://ui/building_entry/building_entry.gd" id="1_1v4jb"]
+
+[node name="BuildingEntry" type="Button" unique_id=1401638056]
+script = ExtResource("1_1v4jb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=39352762]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameLabel" type="Label" parent="HBoxContainer" unique_id=2095679686]
+layout_mode = 2
+
+[node name="CostLabel" type="Label" parent="HBoxContainer" unique_id=1706256051]
+layout_mode = 2

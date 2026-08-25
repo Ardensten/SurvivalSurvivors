@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuildingDefinition" format=3 uid="uid://bemkehcinxgjx"]
+
+[ext_resource type="Script" uid="uid://b0rg7oww5cbm7" path="res://game/buildings/building_definition.gd" id="1_10iwq"]
+[ext_resource type="Texture2D" uid="uid://dsspjgwgi0q33" path="res://assets/icons/wall_icon.png" id="1_38d5u"]
+[ext_resource type="PackedScene" uid="uid://b4c5h2trvlilj" path="res://game/buildings/wall/wall.tscn" id="1_g6rty"]
+
+[resource]
+script = ExtResource("1_10iwq")
+building_name = "Wall"
+icon = ExtResource("1_38d5u")
+scene = ExtResource("1_g6rty")
+wood_cost = 5
+footprint = Vector2(1, 2)
+metadata/_custom_type_script = "uid://b0rg7oww5cbm7"

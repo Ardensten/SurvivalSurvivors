@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c4ejih2we525s" path="res://debug/debug_overlay.tscn" id="4_c651c"]
 [ext_resource type="PackedScene" uid="uid://bxupac44dy14c" path="res://game/enemies/basic_enemy/basic_enemy.tscn" id="6_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://dj8k53e8f18q7" path="res://game/enemies/enemy_spawner/enemy_spawner.tscn" id="7_4dugh"]
+[ext_resource type="PackedScene" uid="uid://68vvd35103d3" path="res://game/world_tree/world_tree.tscn" id="9_grrlh"]
+[ext_resource type="Script" uid="uid://dffw4x0obabeo" path="res://main/building_placement.gd" id="10_0i4oc"]
 
 [node name="Main" type="Node3D" unique_id=1246959133]
 script = ExtResource("1_3wy1v")
@@ -33,3 +35,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5733395, 0)
 enemy_scene = ExtResource("6_kfbq2")
 spawn_interval = 0.9
 max_active_enemies = 0
+
+[node name="WorldTree" parent="." unique_id=1289431641 instance=ExtResource("9_grrlh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.298538, 1.1031196, -4.4289007)
+
+[node name="BuildingPlacement" type="Node3D" parent="." unique_id=200007758 node_paths=PackedStringArray("camera")]
+script = ExtResource("10_0i4oc")
+camera = NodePath("../Camera/Camera3D")
+
+[editable path="Camera"]

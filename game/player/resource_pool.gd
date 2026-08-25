@@ -15,3 +15,7 @@ func add_resource(type: ResourceNode.ResourceType, amount: int) -> void:
 			stone += amount
 
 	resources_changed.emit(wood, stone)
+
+func can_afford(definition: BuildingDefinition) -> bool:
+	return wood >= definition.wood_cost \
+		and stone >= definition.stone_cost
