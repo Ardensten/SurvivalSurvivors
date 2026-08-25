@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://dv8il2xnqwvi4"]
 
+[ext_resource type="PackedScene" uid="uid://cwsb0q8jr4iil" path="res://game/weapons/basic_projectile_weapon/basic_projectile_weapon.tscn" id="1_d3tx7"]
+[ext_resource type="PackedScene" uid="uid://qn7jsnv6pks7" path="res://game/weapons/projectiles/basic_projectile/basic_projectile.tscn" id="2_fs20w"]
+[ext_resource type="PackedScene" uid="uid://c4ndltp5u8kpq" path="res://game/components/health/health_component.tscn" id="3_d61sk"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjb4j"]
 albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
 
@@ -11,6 +15,10 @@ size = Vector3(1, 2, 1)
 
 [node name="Tower" type="StaticBody3D" unique_id=131751352]
 
+[node name="BasicProjectileWeapon" parent="." unique_id=1988269547 instance=ExtResource("1_d3tx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19308913, 0)
+projectile_scene = ExtResource("2_fs20w")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1978166523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96964574, 0)
 mesh = SubResource("CylinderMesh_15q6v")
@@ -18,3 +26,5 @@ mesh = SubResource("CylinderMesh_15q6v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1487940794]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96964574, 0)
 shape = SubResource("BoxShape3D_2s8xf")
+
+[node name="HealthComponent" parent="." unique_id=525045617 instance=ExtResource("3_d61sk")]

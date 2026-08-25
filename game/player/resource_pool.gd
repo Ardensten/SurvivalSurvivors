@@ -1,8 +1,8 @@
 class_name ResourcePool
 extends Node
 
-var wood: int = 99
-var stone: int = 99
+var wood: int = 0
+var stone: int = 0
 
 signal resources_changed(wood: int, stone: int)
 

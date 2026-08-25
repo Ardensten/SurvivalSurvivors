@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b4c5h2trvlilj"]
 
+[ext_resource type="PackedScene" uid="uid://c4ndltp5u8kpq" path="res://game/components/health/health_component.tscn" id="1_6h8ms"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjb4j"]
 albedo_color = Color(0.49682564, 0.18348986, 9.1448425e-07, 1)
 
@@ -17,3 +19,5 @@ mesh = SubResource("BoxMesh_15q6v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=128508559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47064483, 0)
 shape = SubResource("BoxShape3D_gqodg")
+
+[node name="HealthComponent" parent="." unique_id=525045617 instance=ExtResource("1_6h8ms")]
