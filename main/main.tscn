@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dj8k53e8f18q7" path="res://game/enemies/enemy_spawner/enemy_spawner.tscn" id="7_4dugh"]
 [ext_resource type="PackedScene" uid="uid://68vvd35103d3" path="res://game/world_tree/world_tree.tscn" id="9_grrlh"]
 [ext_resource type="Script" uid="uid://dffw4x0obabeo" path="res://main/building_placement.gd" id="10_0i4oc"]
+[ext_resource type="PackedScene" uid="uid://soit2fjnfao1" path="res://game/buildings/building_blueprint/building_blueprint.tscn" id="11_bsumw"]
 
 [node name="Main" type="Node3D" unique_id=1246959133]
 script = ExtResource("1_3wy1v")
@@ -44,6 +45,7 @@ script = ExtResource("10_0i4oc")
 camera = NodePath("../Camera/Camera3D")
 worldtree = NodePath("../WorldTree")
 resource_pool = NodePath("../Player/ResourcePool")
+blueprint_scene = ExtResource("11_bsumw")
 blocking_mask = 11
 
 [editable path="Player"]

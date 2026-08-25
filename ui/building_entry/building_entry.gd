@@ -50,7 +50,7 @@ func _gui_input(event: InputEvent) -> void:
 				drag_start_position = event.position
 			else:
 				if is_dragging:
-					building_placement.cancel_placement()
+					building_placement.place_blueprint()
 				is_dragging = false
 
 	elif event is InputEventMouseMotion:

@@ -4,6 +4,7 @@ extends Node3D
 @export var camera: Camera3D
 @export var worldtree: Worldtree
 @export var resource_pool: ResourcePool
+@export var blueprint_scene: PackedScene
 
 @export_flags_3d_physics var blocking_mask: int
 
@@ -31,6 +32,8 @@ func _process(_delta: float) -> void:
 	var result := get_world_3d().direct_space_state.intersect_ray(query)
 
 	if result:
+		ghost.global_position = result.position
+
 		var within_build_radius := worldtree.is_position_within_build_radius(
 			ghost.global_position
 		)
@@ -134,3 +137,24 @@ func is_area_clear(position: Vector3) -> bool:
 	var results := get_world_3d().direct_space_state.intersect_shape(query)
 
 	return results.is_empty()
+
+
+func place_blueprint() -> void:
+	if not is_valid_placement:
+		cancel_placement()
+		return
+
+	if not resource_pool.spend_resources(active_definition):
+		cancel_placement()
+		return
+
+	var placement_position := ghost.global_position
+
+	var blueprint := blueprint_scene.instantiate() as BuildingBlueprint
+	blueprint.setup(active_definition)
+
+	get_tree().current_scene.add_child(blueprint)
+
+	blueprint.global_position = placement_position
+
+	cancel_placement()
